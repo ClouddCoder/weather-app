@@ -1,4 +1,5 @@
 .container {
+  width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,4 +12,29 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-weather {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto 150px 150px;
+}
+
+.container-search {
+  display: flex;
+  justify-content: center;
+}
+
+.container-temp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+
+.container-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
 }
