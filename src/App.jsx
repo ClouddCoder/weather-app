@@ -14,9 +14,7 @@ function App() {
       const data = await getWeather(city);
       setWeather(data);
     } catch (err) {
-      const { response } = err;
-      const { data } = response;
-      setError(data.message);
+      setError("City not found");
     }
   };
 
@@ -28,34 +26,43 @@ function App() {
     <div className="container">
       <main>
         <h1>Weather App</h1>
-        <form onSubmit={handleGetWeather} className="container-weather">
+        <form onSubmit={handleGetWeather} className="container-form">
           <section className="container-search">
             <input type="text" placeholder="City" onChange={handleChange} value={city} />
-            <div>
-              <button type="submit">Search</button>
-            </div>
+            <button type="submit">Search</button>
           </section>
-          <section>
-            <h3>{weather ? weather.name : "-"}</h3>
-          </section>
-          <section>
-            <h4>{weather ? weather.weather?.[0].description : "-"}</h4>
-          </section>
-          <section className="container-temp">
-            <span>{weather ? `${weather.main?.temp} °C` : "°C"}</span>
-            <img
-              src={
-                weather
-                  ? `http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`
-                  : "http://openweathermap.org/img/wn/03d@2x.png"
-              }
-              alt="weather icon"
-            />
-          </section>
-          <section className="container-details">
-            <span>{weather ? `Feels like: ${weather.main?.feels_like} °C` : "°C"}</span>
-            <span>{weather ? `Humidity: ${weather.main?.humidity} %` : "%"}</span>
-            <span>{weather ? `Pressure: ${weather.main?.pressure} hPs` : "hps"}</span>
+          <section className="container-weather">
+            <section>
+              <h3>{weather ? weather.name : "-"}</h3>
+            </section>
+            <section>
+              <span>{weather ? weather.weather?.[0].description : "-"}</span>
+            </section>
+            <section className="container-temp">
+              <span className="temp-field">{weather ? `${weather.main?.temp}°C` : "°C"}</span>
+              <img
+                src={
+                  weather
+                    ? `http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`
+                    : "http://openweathermap.org/img/wn/03d@2x.png"
+                }
+                alt="weather icon"
+              />
+            </section>
+            <section className="container-details">
+              <div>
+                <h3>Feels like</h3>
+                <span>{weather ? `${weather.main?.feels_like}°C` : "°C"}</span>
+              </div>
+              <div>
+                <h3>Humidity</h3>
+                <span>{weather ? `${weather.main?.humidity} %` : "%"}</span>
+              </div>
+              <div>
+                <h3>Pressure</h3>
+                <span>{weather ? `${weather.main?.pressure} hPs` : "hps"}</span>
+              </div>
+            </section>
           </section>
         </form>
       </main>
