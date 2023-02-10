@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleGetWeather = async (e) => {
@@ -25,6 +25,11 @@ function App() {
 
   const handleChange = (e) => {
     setCity(e.target.value);
+
+    if (error) {
+      setError(null);
+      setWeather(null);
+    }
   };
 
   return (
@@ -50,37 +55,45 @@ function App() {
             )}
           </section>
           <section className="container-weather">
-            <section>
-              <h3 className="main-subheading">{weather ? weather.name : "-"}</h3>
-            </section>
-            <section>
-              <span>{weather ? weather.weather?.[0].description : "-"}</span>
-            </section>
-            <section className="container-temp">
-              <span className="temp-field">{weather ? `${weather.main?.temp}°C` : "°C"}</span>
-              <img
-                src={
-                  weather
-                    ? `http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`
-                    : "http://openweathermap.org/img/wn/03d@2x.png"
-                }
-                alt="weather icon"
-              />
-            </section>
-            <section className="container-details">
-              <div>
-                <h3 className="main-subheading">Feels like</h3>
-                <span>{weather ? `${weather.main?.feels_like}°C` : "°C"}</span>
-              </div>
-              <div>
-                <h3 className="main-subheading">Humidity</h3>
-                <span>{weather ? `${weather.main?.humidity}%` : "%"}</span>
-              </div>
-              <div>
-                <h3 className="main-subheading">Pressure</h3>
-                <span>{weather ? `${weather.main?.pressure} hPs` : "hps"}</span>
-              </div>
-            </section>
+            {error ? (
+              <section>
+                <h3 className="main-subheading">{error}</h3>
+              </section>
+            ) : (
+              <>
+                <section>
+                  <h3 className="main-subheading">{weather ? weather.name : "-"}</h3>
+                </section>
+                <section>
+                  <span>{weather ? weather.weather?.[0].description : "-"}</span>
+                </section>
+                <section className="container-temp">
+                  <span className="temp-field">{weather ? `${weather.main?.temp}°C` : "°C"}</span>
+                  <img
+                    src={
+                      weather
+                        ? `http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`
+                        : "http://openweathermap.org/img/wn/03d@2x.png"
+                    }
+                    alt="weather icon"
+                  />
+                </section>
+                <section className="container-details">
+                  <div>
+                    <h3 className="main-subheading">Feels like</h3>
+                    <span>{weather ? `${weather.main?.feels_like}°C` : "°C"}</span>
+                  </div>
+                  <div>
+                    <h3 className="main-subheading">Humidity</h3>
+                    <span>{weather ? `${weather.main?.humidity}%` : "%"}</span>
+                  </div>
+                  <div>
+                    <h3 className="main-subheading">Pressure</h3>
+                    <span>{weather ? `${weather.main?.pressure} hPs` : "hps"}</span>
+                  </div>
+                </section>
+              </>
+            )}
           </section>
         </form>
       </main>
