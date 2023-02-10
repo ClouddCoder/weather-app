@@ -16,13 +16,15 @@ main {
   gap: 20px;
 }
 
-h1 {
+.main__title {
   color: var(--title-color);
   font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 600;
 }
 
-h3 {
+.main-subheading {
   font-size: clamp(1.125rem, 5vw, 1.25rem);
+  font-weight: 600;
 }
 
 span {
@@ -53,7 +55,8 @@ span.temp-field {
   border: solid 1px var(--card-color);
 }
 
-.container-search > button {
+.container-search .submit-button {
+  display: flex;
   padding: 10px;
   border: solid 1px var(--card-color);
   background: transparent;
@@ -61,7 +64,11 @@ span.temp-field {
   border-radius: 4px;
 }
 
-.container-search > button:hover {
+.container-search .disabled {
+  pointer-events: none;
+}
+
+.container-search .submit-button:hover {
   background: rgba(9, 48, 64, 0.2);
 }
 
