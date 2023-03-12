@@ -20,7 +20,7 @@ Weather App to access the current weather data for any location using the OpenWe
 
 - Install node.js.
 
-## Instalation
+## Installation
 
 1. Clone the repo:
 
