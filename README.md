@@ -20,7 +20,7 @@ Weather App to access the current weather data for any location using the OpenWe
 
 - Install node.js.
 
-## Instalation
+## Installation
 
 1. Clone the repo:
 
@@ -28,7 +28,7 @@ Weather App to access the current weather data for any location using the OpenWe
 git clone https://github.com/ClouddCoder/weather-app.git
 ```
 
-2. Install npm dependencies in the project root:
+2. Install the dependencies in the project root:
 
 ```
 npm install
@@ -57,7 +57,3 @@ https://weather-app-fm3c.onrender.com/
 # Contributors
 
 - [@ClouddCoder](https://github.com/ClouddCoder)
-
-# License
-
-Lottus is MIT licensed.
